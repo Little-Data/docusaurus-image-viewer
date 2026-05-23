@@ -39,17 +39,37 @@ https://github.com/tipsxBase/docusaurus-plugin-image-viewer
         scale: 1.8,                    // 初始缩放大小
         enableWheelZoom: true,         // 是否启用鼠标滚轮缩放图片
         containerSelector: 'article',  // 插件生效的容器
+        excludeSelector: '.avatar',    // 插件排除的容器
         minScale: 0.5,                 // 最小缩放
         maxScale: 5,                   // 最大缩放，当为 Infinity 时可无限放大
         wheelStep: 0.25,               // 滚动一次的缩放倍率
       },
+// 其它内容......
 ```
+
+上面的配置可以写在 `plugins` 中，不用在 `themeConfig` 中添加 ：
+
+```js
+// 其它内容......
+  plugins: [
+    // 其它内容......
+    ['./plugins/image-viewer',{scale: 1.8, enableWheelZoom: true, containerSelector: 'article',excludeSelector: '.avatar', minScale: 0.5, maxScale: 5, wheelStep: 0.25,} ],
+    // 其它内容......
+  ],
+// 其它内容......
+```
+`excludeSelector` 可以写成数组形式：
+
+`excludeSelector: ['.avatar', '.author-avatar-container'],`
+
 
 ## 使用
 
 `Esc` 键：关闭图片预览。
 
 `0` 数字键：恢复为默认缩放值。
+
+触屏设备上可三次快速点击关闭图片预览。
 
 适配深色模式。
 
